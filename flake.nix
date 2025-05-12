@@ -138,18 +138,13 @@
         ${unrealFHS}/bin/unreal-env -c "cd '$UE_DIR' && ./'$UE_BIN' $*"
       '';
 
-      # Modified Rider launch script to use the Toolbox-installed Rider
       riderScript = pkgs.writeScriptBin "run-rider" ''
         #!${pkgs.stdenv.shell}
-
-        # Check if JetBrains Toolbox Rider exists
         TOOLBOX_RIDER="$HOME/.local/share/JetBrains/Toolbox/apps/rider/bin/rider.sh"
 
         if [ -f "$TOOLBOX_RIDER" ]; then
-          # Launch Toolbox-installed Rider within the FHS environment
           ${unrealFHS}/bin/unreal-env -c "$TOOLBOX_RIDER $*"
         else
-          # Fallback to system-installed Rider
           ${unrealFHS}/bin/unreal-env -c "rider $*"
         fi
       '';
