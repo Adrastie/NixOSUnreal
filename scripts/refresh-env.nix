@@ -1,0 +1,40 @@
+{ pkgs, lib, utils }:
+
+pkgs.writeScriptBin "refresh-env" ''
+  #!${pkgs.stdenv.shell}
+  ${lib.banners.colorTheWorld}
+  clear
+  print_base "╔══LOVE♥IS♥LOVE═══════════════════════════════════════════╗"
+  print_base "║''${BRED}♥♥♥♥♥♥''${NC}Adrastie NixOS Unreal Engine 5 Binary Dev Env''${BRED}♥♥♥♥♥♥''${NC}║"
+  print_base "╠═════════════════════════════════════════════════════════╣"
+  print_base "║To run Unreal Engine:                                    ║"
+  print_base "║''${BYELLOW}  run-unreal''${NC} [optional_path] [args...]                   ║"
+  print_base "║   - Default path: ../Engine/Binaries/Linux/UnrealEditor ║"
+  print_base "║   - If you specify a path, it will be used instead      ║"
+  print_base "║''${BYELLOW}   - If you use Rider start Unreal from Rider!''${NC}           ║"
+  print_base "║                                                         ║"
+  print_base "║To run JetBrain Rider within the environment:            ║"
+  print_base "║''${BYELLOW}  run-rider''${NC} [args...]                                    ║"
+  print_base "║                                                         ║"
+  print_base "║To check if Vulkan work:                                 ║"
+  print_base "║''${YELLOW}  check-vulkan''${NC}                                           ║"
+  print_base "║                                                         ║"
+  print_base "║To learn about KDE Wayland mandatory settings:           ║"
+  print_base "║''${YELLOW}  kde-wayland-settings''${NC}                                   ║"
+  print_base "║                                                         ║"
+  print_base "║To kill orphaned Unreal Engine processes:                ║"
+  print_base "║''${YELLOW}  kill-unreal''${NC}                                            ║"
+  print_base "║                                                         ║"
+  print_base "║To enter the FHS shell (advanced):                       ║"
+  print_base "║''${YELLOW}  unreal-fhs''${NC}                                             ║"
+  print_base "║                                                         ║"
+  print_base "║To display this tooltips:                                ║"
+  print_base "║''${YELLOW}  refresh-env''${NC}                                            ║"
+  print_base "╚═════════════════════════════════════MAKE♥GAMES♥NOT♥WAR══╝"
+  print_error "            !!! IMPORTANT SECURITY NOTICE FOR WAYLAND !!!                                "
+  print_warning "- For keyboard input to work in Unreal Engine popups under KDE/Wayland,            "
+  print_warning "- you need to disable an important and great Wayland security setting :(           "
+  print_warning "- No workaround seem currently available that maintains Wayland's security model   "
+  print_base ""
+  print_base "Run ''${YELLOW}kde-wayland-settings''${NC} for more details."
+''
