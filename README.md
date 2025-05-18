@@ -25,9 +25,9 @@ Targeting my workstation, with an nvidia gpu and JetBrain rider, flake was made 
 5. Run 'nix develop'
 6. (Optional) Check Vulkan with `check-vulkan`.
 7. - Launch Rider with `run-rider` and launch Unreal Engine from Rider.
-7. - OR
-7.  Launch Unreal Engine with 'run-unreal'
-8. If you are having engine issues or an undying process, run `kill-unreal` in the FHS to check and/or kill the Unreal process.
+ - OR
+ - Launch Unreal Engine with 'run-unreal'
+7. If you are having engine issues or an undying process, run `kill-unreal` in the FHS to check and/or kill the Unreal process.
 
 
 
