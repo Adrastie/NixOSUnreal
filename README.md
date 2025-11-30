@@ -18,19 +18,6 @@ Targeting my workstation, with an nvidia gpu and JetBrain rider, flake was made 
 1. Download [Unreal Engine 5.x.x Pre-compiled Binaries](https://www.unrealengine.com/en-US/linux)
 2. Extract the archive to a new folder and open it
 3. In a terminal inside the base Unreal Engine Binaries folder run `git clone https://github.com/Adrastie/NixOSUnreal.git flake`
-4. Enter flake folder
-5. Run `nix develop`
-6. (Optional) Check Vulkan with `check-vulkan`.
- - Launch Rider with `run-rider` and launch Unreal Engine from Rider.
- - OR
- - Launch Unreal Engine with `run-unreal`
-7. If you are having engine issues or an undying process, run `kill-unreal` in the FHS to check and/or kill the Unreal process.
-
-
-
-## Warning: If you are using Wayland with the Unreal Engine, the Popup keyboard input may not work at all. To find more information and an unsecured but unavoidable workaround, run `kde-wayland-settings`.
-=======
-3. `git clone https://github.com/Adrastie/NixOSUnreal.git flake`
 4. `cd flake && nix develop`
 5. (Optional) Check Vulkan with `check-vulkan`.
 6. - Launch Rider with `run-rider` and launch Unreal Engine from Rider.
