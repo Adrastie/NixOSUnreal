@@ -17,7 +17,6 @@ Targeting my workstation, with an nvidia gpu and JetBrain rider, flake was made 
 ## Unreal Linux Binary:
 1. Download [Unreal Engine 5.x.x Pre-compiled Binaries](https://www.unrealengine.com/en-US/linux)
 2. Extract the archive to a new folder and open it
-<<<<<<< HEAD
 3. In a terminal inside the base Unreal Engine Binaries folder run `git clone https://github.com/Adrastie/NixOSUnreal.git flake`
 4. Enter flake folder
 5. Run `nix develop`
