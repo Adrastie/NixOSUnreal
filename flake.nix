@@ -41,6 +41,5 @@ devShells.${system}.default = pkgs.mkShell {
     ${scripts.refreshEnvScript}/bin/refresh-env
   '';
 };
-
-    };
+};
 }

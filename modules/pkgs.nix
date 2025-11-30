@@ -53,6 +53,11 @@ in {
     dbus
     bash
     coreutils
+    # Libs required to run compiled version
+    libgbm
+    expat
+    atk
+    libdrm
     # UDEV stuff
     udev
     systemd
