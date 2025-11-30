@@ -46,7 +46,7 @@ UnrealEngine5.5.4bin
 6. `cd ../UnrealEngine`
 7. `./Setup.sh`
 8. `./GenerateProjectFiles.sh`
-9. `make -j1' we must use '-j1`
+9. `make -j1` we must use `-j1`
 10. Once compiled you will find the binary in the UnrealEngine folder `Engine/Binaries/Linux/UnrealEditor`
 
 #### Example structure:
