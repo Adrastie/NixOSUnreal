@@ -1,0 +1,78 @@
+# .envrc-user
+# INFO: Base user template
+#
+#XXX:═══════════ (optional) Optional Path for multiples Unreal Engine versions ═════════════════
+# INFO: (optional) LATEST Unreal Epic binary build
+export UE_LATEST_BIN="$HOME/Documents/gamedev/UnrealEngine/Engines/latest_bin"
+# INFO: (optional) LATEST Unreal source build
+export UE_LATEST_SRC="$HOME/Documents/gamedev/UnrealEngine/Engines/latest_src"
+# INFO: (optional) PROD Unreal 5.7.n
+#export UE_57_SRC="$HOME/Documents/Unreal/Engine/57_src"
+# INFO: (optional) PREV Unreal 5.6.n
+#export UE_56_SRC="$HOME/Documents/Unreal/Engine/56_src"
+#
+#XXX:════════════════ Default Path ══════════════════════
+# TODO: UE_PATH must point to the ENGINE ROOT FOLDER, not the binary!
+# NOTE:  OK:  export UE_PATH="/home/user/UnrealEngine"
+# ISSUE: KO:  export UE_PATH="/home/user/UnrealEngine/Binaries/Linux/UnrealEditor"
+#XXX:════════════════ (mandatory) Unreal Engine Default Path ══════════════════════
+# NOTE: (required) Default engine path. Expect: valid path reference OR Unreal Engine ROOT path:
+export UE_PATH="$UE_LATEST_BIN"
+
+#XXX:════════════════ (mandatory) Unreal Engine Custom launch params ══════════════════════
+# NOTE: UE custom launch parameters
+# HACK: Slate.EnableTooltips=0 and Slate.TooltipSummonDelay=2.0 are mandatory on UE 5.7 Linux:
+#   SDL3 tooltip overlay windows steal X11 focus, causing mouse clicks to "fail"
+# HACK: Slate.bAllowNotifications=0 disables editor notification that trigger the same
+#   focus-steal issue on UE 5.7
+# HACK: r.CEFGPUAcceleration=0 fixes a UE 5.7 regression: the embedded browser
+#   spawns a subprocess that fails vulkan init and enters an infinite crash-restart loop consuming 30-40% idle CPU. 
+#   Disabling GPU accel stops the loop and falls back to software rendering
+#
+# NOTE: For UE 5.7 build from source add: -windowed -ResX=<W> -ResY=<H> -nohighdpi
+#   SDL3 places popup menus at wrong absolute coordinates under XWayland without -windowed
+#   Set W/H to your PRIMARY monitor resolution, note that KDE window rule also required (see README)!
+# export UE_FIXED_ARGS="-savevulkanpsocacheonexit -ForceFrontendRenderThread -nosplash -nocrashreportdialog -ini:Engine:[SystemSettings]:Slate.EnableTooltips=0 -ini:Engine:[/Script/Slate.SlateSettings]:Slate.TooltipSummonDelay=2.0 -ini:Engine:[ConsoleVariables]:Slate.bAllowNotifications=0 -ini:Engine:[ConsoleVariables]:r.CEFGPUAcceleration=0 -windowed -ResX=3840 -ResY=1600 -nohighdpi"
+#
+# NOTE: For UE epic binary:
+export UE_FIXED_ARGS="-savevulkanpsocacheonexit -ForceFrontendRenderThread -nosplash -nocrashreportdialog -ini:Engine:[SystemSettings]:Slate.EnableTooltips=0 -ini:Engine:[/Script/Slate.SlateSettings]:Slate.TooltipSummonDelay=2.0 -ini:Engine:[ConsoleVariables]:Slate.bAllowNotifications=0 -ini:Engine:[ConsoleVariables]:r.CEFGPUAcceleration=0"
+
+#XXX:════════════════ (optional) Rider Path override ══════════════════════
+# WARN: OPTIONAL: override rider path discovery
+# export RIDER_PATH="$HOME/.local/share/JetBrains/Toolbox/apps/rider-2026.1/bin/rider.sh"
+
+
+#XXX:════════════════ (optional) Unreal Engine Optional Flags, uncomment to enable ══════════════════════
+# INFO: UE_VULKAN_DEBUG
+#   WARN: BIG PERFORMANCE HIT!
+#   Enable -vulkandebug in UE and sets VK_LAYER_PATH in the FHS
+#   Activates Vulkan validation layers on UE, printing a detailed
+#   error for every invalid Vulkan API call.
+# export UE_VULKAN_DEBUG=1
+
+# HACK: UE_NO_RELATIVE_MOUSE
+#   Disables SDL's relative mouse mode, mandatory under KDE Plasma
+#   Mandatory to mouse issues with remote desktop (VNC/Sunshine/Parsec)
+export UE_NO_RELATIVE_MOUSE=1
+
+# INFO: UE_GPU_CRASH_DEBUG
+#   NOTE: Small runtime performance overhead.
+#   Enables nvidia aftermath, records what the GPU pipeline was executing at
+#   the moment of a driver crash and writes a .nv-gpudmp dump file for
+#   post analysis
+# export UE_GPU_CRASH_DEBUG=1
+
+# WARN: UE_STOMP_MALLOC
+#   WARN: VERY HIGH RAM USAGE. NON-SHIPPING (DEBUG/DEVELOPMENT) BUILDS ONLY & exclusive with UE_ANSI_MALLOC as stomp takes priority!
+#   NOTE: Replaces UE's default memory allocator with a guard-page allocator.
+#   Every allocation gets a protected memory page placed next to it, so any buffer
+#   overrun immediately triggers a crash with a clean call stack pointing at
+#   the exact overrun site, instead of causing silent heap corruption that
+#   surfaces later as a crash elsewhere
+# export UE_STOMP_MALLOC=1
+
+# WARN: UE_ANSI_MALLOC
+#   WARN: Silently ignored if UE_STOMP_MALLOC=1 is also set and slower than UE's default binned allocator!
+#   NOTE: Replaces UE's default allocator with the system standard malloc/free. Makes
+#   all heap allocations visible to external tools like valgrind and address sanitizers
+# export UE_ANSI_MALLOC=1
