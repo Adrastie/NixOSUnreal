@@ -7,9 +7,6 @@ pkgs.writeShellApplication {
   text = ''
     . ${lib.bashLib}/share/unreal/bash-lib.sh
 
-    # if command -v codium &>/dev/null; then
-    #   VSCODIUM_BIN=$(command -v codium)
-    # elif ...
     if [ -f "${pkgs.vscodium}/bin/codium" ]; then
       VSCODIUM_BIN="${pkgs.vscodium}/bin/codium"
     else
