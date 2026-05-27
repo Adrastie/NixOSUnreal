@@ -146,6 +146,7 @@ exported manually):
 nix run /path/to/NixOSUnreal                    # Start Unreal Editor
 nix run /path/to/NixOSUnreal#run-rider          # Start Rider
 nix run /path/to/NixOSUnreal#run-vscode         # Start VsCode
+nix run /path/to/NixOSUnreal#run-vscodium       # Start VsCodium
 nix run /path/to/NixOSUnreal#check-vulkan       # Vulkan diagnostics
 nix run /path/to/NixOSUnreal#kill-unreal        # Unreal Engine process cleanup
 ```

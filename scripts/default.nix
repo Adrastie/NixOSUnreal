@@ -10,14 +10,16 @@ let
   debugSymbolsScript  = import ./ue-debug-symbols.nix  { inherit pkgs lib; };
   genClangdbScript    = import ./gen-clangdb.nix        { inherit pkgs lib; };
 
-  runRiderScript   = if cfg.enableRider  or true then import ./run-rider.nix           { inherit pkgs lib unrealFHSWrapper; } else null;
-  runVscodeScript  = if cfg.enableVscode or true then import ./run-vscode.nix          { inherit pkgs lib unrealFHSWrapper; } else null;
-  p4FixPermsScript = if cfg.enableP4     or true then import ./ue-source-fix-perms.nix { inherit pkgs lib; }                  else null;
+  runRiderScript      = if cfg.enableRider    or true then import ./run-rider.nix           { inherit pkgs lib unrealFHSWrapper; } else null;
+  runVscodeScript     = if cfg.enableVscode   or true then import ./run-vscode.nix          { inherit pkgs lib unrealFHSWrapper; } else null;
+  runVscodiumScript   = if cfg.enableVscodium or true then import ./run-vscodium.nix        { inherit pkgs lib unrealFHSWrapper; } else null;
+  p4FixPermsScript    = if cfg.enableP4       or true then import ./ue-source-fix-perms.nix { inherit pkgs lib; }                  else null;
 
   ideScripts = []
-    ++ (if runRiderScript   != null then [ runRiderScript   ] else [])
-    ++ (if runVscodeScript  != null then [ runVscodeScript  ] else [])
-    ++ (if p4FixPermsScript != null then [ p4FixPermsScript ] else []);
+    ++ (if runRiderScript     != null then [ runRiderScript     ] else [])
+    ++ (if runVscodeScript    != null then [ runVscodeScript    ] else [])
+    ++ (if runVscodiumScript  != null then [ runVscodiumScript  ] else [])
+    ++ (if p4FixPermsScript   != null then [ p4FixPermsScript   ] else []);
 in {
   inherit
     refreshEnvScript
@@ -30,6 +32,7 @@ in {
     genClangdbScript
     runRiderScript
     runVscodeScript
+    runVscodiumScript
     p4FixPermsScript;
 
   all = [

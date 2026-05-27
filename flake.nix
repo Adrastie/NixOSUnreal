@@ -9,10 +9,11 @@
       pkgs      = import nixpkgs { inherit system; config.allowUnfree = true; };
       userConfig = if builtins.pathExists ./user-config.nix then import ./user-config.nix else {};
       cfg = {
-        enableRider  = userConfig.enableRider  or true;
-        enableVscode = userConfig.enableVscode or true;
-        enableGit    = userConfig.enableGit    or true;
-        enableP4     = userConfig.enableP4     or true;
+        enableRider     = userConfig.enableRider    or true;
+        enableVscode    = userConfig.enableVscode   or true;
+        enableVscodium  = userConfig.enableVscodium or true;
+        enableGit       = userConfig.enableGit      or true;
+        enableP4        = userConfig.enableP4       or true;
       };
 
       lib    = import ./lib { inherit pkgs; };
@@ -30,9 +31,10 @@
         ue-debug-symbols    = { type = "app"; program = "${scripts.debugSymbolsScript}/bin/ue-debug-symbols"; };
         gen-clangdb         = { type = "app"; program = "${scripts.genClangdbScript}/bin/gen-clangdb"; };
       }
-      // (if cfg.enableRider  then { run-rider          = { type = "app"; program = "${scripts.runRiderScript}/bin/run-rider"; };                } else {})
-      // (if cfg.enableVscode then { run-vscode         = { type = "app"; program = "${scripts.runVscodeScript}/bin/run-vscode"; };               } else {})
-      // (if cfg.enableP4     then { ue-source-fix-perms = { type = "app"; program = "${scripts.p4FixPermsScript}/bin/ue-source-fix-perms"; }; } else {});
+      // (if cfg.enableRider    then { run-rider          = { type = "app"; program = "${scripts.runRiderScript}/bin/run-rider"; };               } else {})
+      // (if cfg.enableVscode   then { run-vscode         = { type = "app"; program = "${scripts.runVscodeScript}/bin/run-vscode"; };             } else {})
+      // (if cfg.enableVscodium then { run-vscodium         = { type = "app"; program = "${scripts.runVscodiumScript}/bin/run-vscodium"; };       } else {})
+      // (if cfg.enableP4       then { ue-source-fix-perms = { type = "app"; program = "${scripts.p4FixPermsScript}/bin/ue-source-fix-perms"; };  } else {});
 
       devShells.${system}.default = pkgs.mkShell {
         packages = [
