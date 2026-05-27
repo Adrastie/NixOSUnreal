@@ -32,10 +32,12 @@ pkgs.writeShellApplication {
     echo -e "$G║$R    $Y nix run .#ue-source-fix-perms$R     $D: (optional) Fix UE source +x after p4 sync $R $G║$R"
     echo -e "$G║$R                                                                                    $G║$R"
     echo -e "$G║$R  $B[nix-direnv & nix develop]$R  $D all commands available on PATH$R                       $G║$R"
-    echo -e "$G║$R    $Y run-unreal$R [args]             $Y run-rider$R [args]                                $G║$R"
-    echo -e "$G║$R    $Y run-vscode$R [args]             $Y run-vscodium$R [args]                             $G║$R"
-    echo -e "$G║$R                                    $Y check-vulkan$R $D: Vulkan diagnostic$R               $G║$R"
-    echo -e "$G║$R    $Y kill-unreal$R                  $Y unreal-fhs$R $D: enter env FHS sandbox$R               $G║$R"
+    echo -e "$G║$R  $B[IDE's]$R  $Y run-unreal$R [args]             $Y run-rider$R [args]                         $G║$R"
+    echo -e "$G║$R           $Y run-vscode$R [args]             $Y run-vscodium$R [args]                      $G║$R"
+    echo -e "$G║$R  $B[Commands]$R                                                                        $G║$R"
+    echo -e "$G║$R    $Y check-vulkan$R $D: Vulkan diagnostic$R                                               $G║$R"
+    echo -e "$G║$R    $Y kill-unreal$R  $D: Kill stalled unreal$R                                             $G║$R"
+    echo -e "$G║$R    $Y unreal-fhs$R $D: enter env FHS sandbox$R                                             $G║$R"
     echo -e "$G║$R    $Y ue-debug-symbols$R               $D: stash/restore .debug files (LLDB RAM)$R         $G║$R"
     echo -e "$G║$R    $Y gen-clangdb$R [project.uproject] $D: generate compile_commands.json                $G║$R"
     echo -e "$G║$R    $Y ue-source-fix-perms$R            $D: restore +x bits after p4 sync (UE source)$R     $G║$R"
@@ -59,3 +61,4 @@ pkgs.writeShellApplication {
     echo
   '';
 }
+
