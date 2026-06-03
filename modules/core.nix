@@ -58,6 +58,9 @@
     export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
     export PATH="${dotnetPkg}/bin:$PATH"
 
+    # Make system headers visible to clangd and VSCode IntelliSense.
+    export CPATH="${pkgs.glibc.dev}/include:${pkgs.linuxHeaders}/include''${CPATH:+:$CPATH}"
+
     # WORKAROUND: epic does not care about linux, so here are some settings that help
     export GTK_IM_MODULE=""
     export QT_IM_MODULE=""
