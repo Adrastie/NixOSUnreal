@@ -1,1 +1,4 @@
+# Direnv cache
 .direnv
+# Default Unrean Engine folder (readme.md + default.nix)
+Engines/
